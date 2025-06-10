@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: local
+
+  h2:
+    console:
+      enabled: true # H2 ?? ???
+      path: /h2-console
+
+  datasource:
+    url: jdbc:h2:mem:database # ???? H2 DB ??
+  jwt:
+    secret: iwantcoffee-americano+ice-americano-is-best-i.love_it+yaho
+    expirationMinute: 15
