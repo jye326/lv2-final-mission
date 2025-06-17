@@ -1,13 +1,12 @@
 package finalmission.business.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import finalmission.business.model.entity.Member;
 import finalmission.business.model.entity.Reservation;
 import finalmission.infrastructure.repository.ReservationRepository;
+import io.restassured.RestAssured;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 
 @ExtendWith(MockitoExtension.class)
 class ReservationServiceTest {
@@ -27,7 +27,7 @@ class ReservationServiceTest {
     private ReservationService reservationService;
     
     @Test
-    @DisplayName("")
+    @DisplayName("전체 예약 조회 테스트 - Mocking")
     void test() {
         // given
         Member ddiyong = Member.create("띠용", "ddiyong@gmail.com", "1234");
