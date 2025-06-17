@@ -18,7 +18,6 @@ public record AuthToken(
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(TOKEN_NAME)) {
-                    System.out.println(cookie.getValue());
                     return new AuthToken(cookie.getValue());
                 }
             }

@@ -1,5 +1,6 @@
 package finalmission.business.model.entity;
 
+import finalmission.presentation.dto.ReservationRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,6 +41,11 @@ public class Reservation {
                                      String flightCode) {
         return new Reservation(null, member, passportId, departureDateTime, arrivalDateTime, departures, arrivals,
                 flightCode);
+    }
+
+    public static Reservation create(ReservationRequest request) {
+        return new Reservation(null, request.member(), request.passportId(), request.departureDateTime(), request.arrivalDateTime(), request.departures(), request.arrivals(),
+                request.flightCode());
     }
 
 }

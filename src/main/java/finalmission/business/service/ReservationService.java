@@ -2,6 +2,7 @@ package finalmission.business.service;
 
 import finalmission.business.model.entity.Reservation;
 import finalmission.infrastructure.repository.ReservationRepository;
+import finalmission.presentation.dto.ReservationRequest;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,10 @@ public class ReservationService {
 
     public ReservationService(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
+    }
+
+    public Reservation save(ReservationRequest reservationRequest) {
+        return reservationRepository.save(Reservation.create(reservationRequest));
     }
 
     public void save(Reservation reservation) {

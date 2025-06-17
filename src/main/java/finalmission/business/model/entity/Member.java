@@ -23,5 +23,9 @@ public class Member {
         return new Member(null, name, email, password);
     }
 
+    public static Member create(Long id, String name, String email, String password) {
+        return new Member(id, name, email, password);
+    }
+
     public Member() {}
 }
