@@ -21,9 +21,6 @@ class ReservationServiceTest {
     @Mock
     private ReservationRepository reservationRepository;
 
-    @Mock
-    private PaymentService paymentService;
-
     @InjectMocks
     private ReservationService reservationService;
 
