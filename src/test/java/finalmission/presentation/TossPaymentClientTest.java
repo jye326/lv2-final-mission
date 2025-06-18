@@ -1,6 +1,5 @@
 package finalmission.presentation;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -34,7 +33,8 @@ class TossPaymentClientTest {
         mockRestServiceServer.expect(requestTo(url)).andExpect(method(HttpMethod.POST))
                 .andRespond(withSuccess());
         // then
-        Assertions.assertThatCode(() -> tossPaymentClient.approvePayment(PaymentInfo.of("PaymentKey", "orderId", 20_000L)));
+        Assertions.assertThatCode(
+                () -> tossPaymentClient.approvePayment(PaymentInfo.of("PaymentKey", "orderId", 20_000L)));
     }
 
 }

@@ -7,7 +7,6 @@ import finalmission.presentation.dto.PaymentInfo;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestClient;
@@ -24,7 +23,7 @@ public class TossPaymentClient {
     }
 
     public PaymentApproveResponseDto approvePayment(PaymentInfo paymentInfo) {
-        String encodedSecretKey = Base64.getEncoder().encodeToString((secretKey+":").getBytes());
+        String encodedSecretKey = Base64.getEncoder().encodeToString((secretKey + ":").getBytes());
         return restClient.post()
                 .uri("/v1/payments/confirm")
                 .body(paymentInfo)
@@ -37,6 +36,5 @@ public class TossPaymentClient {
                 })
                 .body(PaymentApproveResponseDto.class);
     }
-
 
 }

@@ -3,9 +3,7 @@ package finalmission.presentation.api;
 import finalmission.auth.AuthRequired;
 import finalmission.business.model.entity.Reservation;
 import finalmission.business.service.ReservationService;
-import finalmission.presentation.dto.PaymentInfo;
 import finalmission.presentation.dto.ReservationRequest;
-import finalmission.presentation.dto.ReservationSpec;
 import java.net.URI;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -41,15 +39,16 @@ public class ReservationController {
 
     @AuthRequired
     @PostMapping("/reservations/{id}")
-    public ResponseEntity<Reservation> modifyPassportId(@PathVariable Long id, Long memberId, @RequestBody String passportId) {
+    public ResponseEntity<Reservation> modifyPassportId(@PathVariable Long id, Long memberId,
+                                                        @RequestBody String passportId) {
         return new ResponseEntity<>(reservationService.modifyPassportId(id, memberId, passportId), HttpStatus.OK);
     }
 
     @AuthRequired
     @PostMapping("/reservations")
-    public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequest request){
+    public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequest request) {
         System.out.println(request);
-        Reservation reservation =  reservationService.save(request);
+        Reservation reservation = reservationService.save(request);
         return ResponseEntity.created(URI.create("/reservations")).body(reservation);
     }
 

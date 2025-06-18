@@ -20,7 +20,7 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    public Payment pay(Reservation reservation, PaymentInfo paymentInfo){
+    public Payment pay(Reservation reservation, PaymentInfo paymentInfo) {
         PaymentApproveResponseDto paymentApproveResponseDto = paymentClient.approvePayment(paymentInfo);
         return paymentRepository.save(Payment.create(reservation, paymentApproveResponseDto));
     }

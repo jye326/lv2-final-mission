@@ -19,6 +19,9 @@ public class Member {
     private String email;
     private String password;
 
+    public Member() {
+    }
+
     public static Member create(String name, String email, String password) {
         return new Member(null, name, email, password);
     }
@@ -26,6 +29,4 @@ public class Member {
     public static Member create(Long id, String name, String email, String password) {
         return new Member(id, name, email, password);
     }
-
-    public Member() {}
 }

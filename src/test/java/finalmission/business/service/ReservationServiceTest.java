@@ -4,11 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import finalmission.business.model.entity.Member;
-import finalmission.business.model.entity.Payment;
 import finalmission.business.model.entity.Reservation;
 import finalmission.infrastructure.repository.ReservationRepository;
-import finalmission.presentation.dto.PaymentInfo;
-import io.restassured.RestAssured;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +26,7 @@ class ReservationServiceTest {
 
     @InjectMocks
     private ReservationService reservationService;
-    
+
     @Test
     @DisplayName("전체 예약 조회 테스트 - Mocking")
     void test() {

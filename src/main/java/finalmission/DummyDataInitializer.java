@@ -50,7 +50,7 @@ public class DummyDataInitializer {
     }
 
     private void saveAllMember(final Member... members) {
-        for(Member member : members) {
+        for (Member member : members) {
             memberService.save(member);
         }
     }

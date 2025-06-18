@@ -1,21 +1,15 @@
 package finalmission.presentation.api;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.stringContainsInOrder;
 
 import finalmission.auth.AuthToken;
 import finalmission.auth.jwt.JJWTJwtUtil;
 import finalmission.business.model.entity.Member;
 import finalmission.business.service.ReservationService;
 import finalmission.infrastructure.repository.ReservationRepository;
-import finalmission.presentation.dto.PaymentInfo;
-import finalmission.presentation.dto.ReservationRequest;
-import finalmission.presentation.dto.ReservationSpec;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +20,18 @@ import org.springframework.test.annotation.DirtiesContext;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @DisplayName("RestAssured 테스트")
 class ReservationControllerTest {
+    private static final String INCHEON = "인천국제공항";
+    private static final String OSAKA = "간사이국제공항";
+    private static final LocalDateTime TOMORROW = LocalDateTime.now().plusDays(1);
+    private final String TOKEN_NAME = "auth_token";
+    @Autowired
+    JJWTJwtUtil jjwtJwtUtil;
     @Autowired
     private ReservationRepository reservationRepository;
     @Autowired
     private ReservationService reservationService;
-    @Autowired
-    JJWTJwtUtil jjwtJwtUtil;
-
-    private final String TOKEN_NAME = "auth_token";
     private AuthToken authToken;
     private Member ddiyong;
-    private static final String INCHEON = "인천국제공항";
-    private static final String OSAKA = "간사이국제공항";
-    private static final LocalDateTime TOMORROW = LocalDateTime.now().plusDays(1);
 
     void setAuthToken() {
         ddiyong = Member.create(1L, "띠용", "ddiyong@gmail.com", "1234");

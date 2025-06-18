@@ -12,7 +12,8 @@ import org.springframework.web.client.RestClient;
 @Configuration
 public class TossPaymentClientConfig {
     @Bean
-    public TossPaymentClient restClient(RestClient.Builder builder, ObjectMapper objectMapper, @Value("${payment.secretKey}") String secretKey){
+    public TossPaymentClient restClient(RestClient.Builder builder, ObjectMapper objectMapper,
+                                        @Value("${payment.secretKey}") String secretKey) {
         return new TossPaymentClient(builder, objectMapper, secretKey);
     }
 

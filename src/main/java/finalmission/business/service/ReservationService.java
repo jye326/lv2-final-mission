@@ -3,9 +3,7 @@ package finalmission.business.service;
 import finalmission.business.model.entity.Reservation;
 import finalmission.exception.ReservationNotFoundException;
 import finalmission.infrastructure.repository.ReservationRepository;
-import finalmission.presentation.dto.PaymentInfo;
 import finalmission.presentation.dto.ReservationRequest;
-import finalmission.presentation.dto.ReservationSpec;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +34,8 @@ public class ReservationService {
     }
 
     public Reservation getReservationById(Long id) {
-        return reservationRepository.findReservationById(id).orElseThrow(() -> new ReservationNotFoundException(id + "번 예약을 찾을 수 없습니다"));
+        return reservationRepository.findReservationById(id)
+                .orElseThrow(() -> new ReservationNotFoundException(id + "번 예약을 찾을 수 없습니다"));
     }
 
     public Reservation modifyPassportId(Long reservationId, Long memberId, String passportId) {

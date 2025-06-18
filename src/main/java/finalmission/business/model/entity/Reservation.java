@@ -44,13 +44,14 @@ public class Reservation {
     }
 
     public static Reservation create(ReservationSpec spec) {
-        return new Reservation(null, spec.member(), spec.passportId(), spec.departureDateTime(), spec.arrivalDateTime(), spec.departures(), spec.arrivals(),
+        return new Reservation(null, spec.member(), spec.passportId(), spec.departureDateTime(), spec.arrivalDateTime(),
+                spec.departures(), spec.arrivals(),
                 spec.flightCode());
     }
 
     public static Reservation createWithId(Long id, Member member, String passportId, LocalDateTime departureDateTime,
-                                     LocalDateTime arrivalDateTime, String departures, String arrivals,
-                                     String flightCode) {
+                                           LocalDateTime arrivalDateTime, String departures, String arrivals,
+                                           String flightCode) {
         return new Reservation(id, member, passportId, departureDateTime, arrivalDateTime, departures, arrivals,
                 flightCode);
     }

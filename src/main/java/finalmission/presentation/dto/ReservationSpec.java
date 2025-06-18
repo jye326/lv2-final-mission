@@ -8,13 +8,16 @@ public record ReservationSpec(Member member, String passportId, LocalDateTime de
                               LocalDateTime arrivalDateTime, String departures, String arrivals,
                               String flightCode) {
     public static ReservationSpec of(Reservation reservation) {
-        return new ReservationSpec(reservation.getMember(), reservation.getPassportId(), reservation.getDepartureDateTime(), reservation.getArrivalDateTime(),
+        return new ReservationSpec(reservation.getMember(), reservation.getPassportId(),
+                reservation.getDepartureDateTime(), reservation.getArrivalDateTime(),
                 reservation.getDepartures(), reservation.getArrivals(), reservation.getFlightCode());
     }
+
     public static ReservationSpec of(Member member, String passportId, LocalDateTime departureDateTime,
                                      LocalDateTime arrivalDateTime, String departures, String arrivals,
-                                     String flightCode){
-        return new ReservationSpec(member, passportId, departureDateTime, arrivalDateTime, departures, arrivals, flightCode);
+                                     String flightCode) {
+        return new ReservationSpec(member, passportId, departureDateTime, arrivalDateTime, departures, arrivals,
+                flightCode);
     }
 
 }

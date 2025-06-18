@@ -23,13 +23,17 @@ public class Payment {
     private String orderId;
     private Long amount;
 
-    protected Payment() {}
+    protected Payment() {
+    }
 
-    public static Payment create (final Reservation reservation, final PaymentInfo paymentInfo) {
+    public static Payment create(final Reservation reservation, final PaymentInfo paymentInfo) {
         return new Payment(null, reservation, paymentInfo.paymentKey(), paymentInfo.orderId(), paymentInfo.amount());
     }
-    public static Payment create (final Reservation reservation, final PaymentApproveResponseDto paymentApproveResponseDto) {
-        return new Payment(null, reservation, paymentApproveResponseDto.paymentKey(), paymentApproveResponseDto.orderId(), paymentApproveResponseDto.totalAmount());
+
+    public static Payment create(final Reservation reservation,
+                                 final PaymentApproveResponseDto paymentApproveResponseDto) {
+        return new Payment(null, reservation, paymentApproveResponseDto.paymentKey(),
+                paymentApproveResponseDto.orderId(), paymentApproveResponseDto.totalAmount());
     }
 
 }
