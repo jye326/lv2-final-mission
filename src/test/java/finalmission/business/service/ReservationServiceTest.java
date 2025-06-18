@@ -4,8 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import finalmission.business.model.entity.Member;
+import finalmission.business.model.entity.Payment;
 import finalmission.business.model.entity.Reservation;
 import finalmission.infrastructure.repository.ReservationRepository;
+import finalmission.presentation.dto.PaymentInfo;
 import io.restassured.RestAssured;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,13 +17,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaType;
 
 @ExtendWith(MockitoExtension.class)
 class ReservationServiceTest {
 
     @Mock
     private ReservationRepository reservationRepository;
+
+    @Mock
+    private PaymentService paymentService;
 
     @InjectMocks
     private ReservationService reservationService;
