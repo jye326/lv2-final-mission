@@ -12,4 +12,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handle(AuthenticationException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
     }
+
+    @ExceptionHandler(ReservationNotFoundException.class)
+    public ResponseEntity<String> handle(ReservationNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(PaymentApproveException.class)
+    public ResponseEntity<String> handle(PaymentApproveException e) {
+        return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED).body(e.getMessage());
+    }
 }
