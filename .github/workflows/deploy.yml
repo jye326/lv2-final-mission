@@ -12,11 +12,12 @@ jobs:
       matrix:
         include:
           - branch: main
-            runner: [ self-hosted, Linux, ARM64, prod ]
+            runner: [ self-hosted, Linux, ARM64 ]
           - branch: develop
-            runner: [ self-hosted, Linux, ARM64, prod ]
+            runner: [ self-hosted, Linux, ARM64 ]
     if: github.ref_name == matrix.branch
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Run deploy
-        run: bash ~/deploy.sh
+        run: |
+          BRANCH_OVERRIDE="${{ github.ref_name }}" bash ~/deploy.sh
