@@ -8,6 +8,7 @@ on:
 
 jobs:
   deploy:
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
         include:
@@ -15,9 +16,9 @@ jobs:
             runner: [ self-hosted, Linux, ARM64 ]
           - branch: develop
             runner: [ self-hosted, Linux, ARM64 ]
-    if: github.ref_name == matrix.branch
-    runs-on: ${{ matrix.runner }}
     steps:
       - name: Run deploy
+        # if 조건문을 스텝 내부에 위치시켜 matrix 변수를 참조
+        if: github.ref_name == matrix.branch
         run: |
           BRANCH_OVERRIDE="${{ github.ref_name }}" bash ~/deploy.sh
