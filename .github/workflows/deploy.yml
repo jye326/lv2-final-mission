@@ -1,0 +1,22 @@
+# .github/workflows/deploy.yml
+name: Deploy (self-hosted)
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        include:
+          - branch: main
+            runner: [ self-hosted, Linux, ARM64, prod ]
+          - branch: develop
+            runner: [ self-hosted, Linux, ARM64, prod ]
+    if: github.ref_name == matrix.branch
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Run deploy
+        run: bash ~/deploy.sh
